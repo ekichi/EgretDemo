@@ -30,12 +30,16 @@ class List extends eui.Component implements  eui.UIComponent {
         this.gList.itemRenderer = LabelRenderer;
     }
 	public test(n:number,t:string):void {
+		let old:any;
+		if(this.gList.selectedItem)old=this.gList.selectedItem;
+		
 		 this.gList.selectedIndex=n;
 		 //this.gList.selectedItem.label=t;
-		//List.sourceArr[n].label=t;
+		List.sourceArr[n].label=t;
 		//List.sourceArr[n].selected=true;
-		this.coll.itemUpdated(this.coll.getItemAt(n));
-		//this.coll.itemUpdated(this.gList.selectedItem);
+		// this.coll.itemUpdated(this.coll.getItemAt(n));
+		this.coll.itemUpdated(this.gList.selectedItem);
+		this.coll.itemUpdated(old);
 		console.log(List.sourceArr[n]);
 		console.log(this.coll);		
 	}
